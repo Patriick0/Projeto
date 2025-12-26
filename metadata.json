@@ -1,0 +1,9 @@
+{
+  "name": "Vigia Cidadã - Transporte",
+  "description": "Plataforma de monitoramento e denúncia para transporte público em Belo Horizonte, com modo discreto de segurança.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
