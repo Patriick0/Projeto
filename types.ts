@@ -1,3 +1,4 @@
+
 export enum ReportCategory {
   SECURITY = 'SEGURANÇA',
   INFRASTRUCTURE = 'INFRAESTRUTURA',
@@ -28,4 +29,14 @@ export interface ReportData {
   isDiscrete: boolean;
 }
 
-export type ViewState = 'LOGIN' | 'HOME' | 'FORM' | 'DISCRETE' | 'SUCCESS' | 'STATS' | 'MAP' | 'PROFILE';
+export interface SupportTicket {
+  id: string;
+  protocol: string;
+  subject: string;
+  message: string;
+  status: 'PENDING' | 'ANSWERED' | 'CLOSED';
+  timestamp: number;
+  response?: string;
+}
+
+export type ViewState = 'LOGIN' | 'TERMS' | 'HOME' | 'FORM' | 'DISCRETE' | 'SUCCESS' | 'STATS' | 'MAP' | 'PROFILE' | 'PROFILE_EDIT' | 'ACHIEVEMENTS' | 'PRIVACY_SETTINGS' | 'SETTINGS' | 'SUPPORT';

@@ -52,15 +52,18 @@ export const analyzeReport = async (report: ReportData) => {
   }
 };
 
-export const fetchBusLineRanking = async () => {
+export const fetchBusLineRanking = async (uf: string = 'MG', city: string = 'Belo Horizonte') => {
   try {
     const prompt = `
-      Gere um JSON contendo uma lista fictícia, mas realista, das 5 linhas de ônibus de Belo Horizonte com o maior número de reclamações nas últimas 24 horas.
+      Gere um JSON contendo uma lista fictícia, mas realista baseada em dados comuns de transporte público, das 5 linhas de ônibus (ou metrô/trem) de ${city} - ${uf} com o maior número de reclamações nas últimas 24 horas.
+      
+      Importante: Use nomes de linhas ou números reais se souber, ou invente formatos plausíveis para a cidade especificada.
+      
       Para cada item, inclua:
-      - lineId: número da linha (ex: 8207, 5106, 3050)
+      - lineId: identificação da linha (ex: número ou nome)
       - totalReports: número de reclamações (entre 10 e 100)
-      - mainIssue: principal motivo (ex: Atraso, Superlotação, Ar condicionado quebrado, Segurança)
-      - trend: "UP" (subindo) ou "DOWN" (descendo) ou "STABLE" (estável)
+      - mainIssue: principal motivo (ex: Atraso, Superlotação, Segurança, Ar condicionado)
+      - trend: "UP" (subindo), "DOWN" (descendo) ou "STABLE" (estável)
     `;
 
     const response = await ai.models.generateContent({

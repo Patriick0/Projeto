@@ -1,14 +1,14 @@
+
 import React from 'react';
-import { AlertTriangle, Map, Menu, User, Bus, BarChart3 } from 'lucide-react';
+import { AlertTriangle, User, Bus, BarChart3, Home as HomeIcon } from 'lucide-react';
 
 interface HomeProps {
   onStartReport: () => void;
   onOpenStats: () => void;
-  onOpenMap: () => void;
   onOpenProfile: () => void;
 }
 
-export const Home: React.FC<HomeProps> = ({ onStartReport, onOpenStats, onOpenMap, onOpenProfile }) => {
+export const Home: React.FC<HomeProps> = ({ onStartReport, onOpenStats, onOpenProfile }) => {
   return (
     <div className="flex flex-col h-screen bg-gray-50">
       {/* Header */}
@@ -54,27 +54,6 @@ export const Home: React.FC<HomeProps> = ({ onStartReport, onOpenStats, onOpenMa
       {/* Main Content */}
       <div className="flex-1 px-6 py-6 overflow-y-auto">
         
-        {/* Dashboard Entry */}
-        <div className="mb-6">
-           <button 
-             onClick={onOpenStats}
-             className="w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between hover:shadow-md transition-shadow"
-           >
-              <div className="flex items-center gap-3">
-                 <div className="bg-blue-100 p-2 rounded-lg">
-                    <BarChart3 className="w-6 h-6 text-bh-blue" />
-                 </div>
-                 <div className="text-left">
-                    <h4 className="font-bold text-gray-800">Ranking de Linhas</h4>
-                    <p className="text-xs text-gray-500">Veja as linhas com mais reclamações</p>
-                 </div>
-              </div>
-              <div className="bg-gray-50 p-1.5 rounded-full">
-                 <Menu className="w-4 h-4 text-gray-400 rotate-180" />
-              </div>
-           </button>
-        </div>
-
         {/* Active Alerts */}
         <div className="mb-6">
           <h2 className="text-gray-800 font-bold mb-3 text-lg flex items-center gap-2">
@@ -112,15 +91,15 @@ export const Home: React.FC<HomeProps> = ({ onStartReport, onOpenStats, onOpenMa
       {/* Bottom Nav */}
       <div className="bg-white border-t border-gray-200 px-6 py-4 flex justify-around">
         <button className="flex flex-col items-center text-bh-blue">
-          <Menu className="w-6 h-6" />
+          <HomeIcon className="w-6 h-6" />
           <span className="text-[10px] font-bold mt-1">Início</span>
         </button>
         <button 
-          onClick={onOpenMap}
+          onClick={onOpenStats}
           className="flex flex-col items-center text-gray-400 hover:text-bh-blue transition-colors"
         >
-          <Map className="w-6 h-6" />
-          <span className="text-[10px] font-bold mt-1">Mapa</span>
+          <BarChart3 className="w-6 h-6" />
+          <span className="text-[10px] font-bold mt-1">Ranking</span>
         </button>
         <button 
           onClick={onOpenProfile}

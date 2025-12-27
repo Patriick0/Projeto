@@ -1,12 +1,26 @@
+
 import React from 'react';
 import { ArrowLeft, User, Mail, Shield, Award, Settings, LogOut, ChevronRight, Phone } from 'lucide-react';
 
 interface ProfileProps {
   onBack: () => void;
   onLogout: () => void;
+  onEditProfile: () => void;
+  onOpenAchievements: () => void;
+  onOpenPrivacy: () => void;
+  onOpenSettings: () => void;
+  onOpenSupport: () => void;
 }
 
-export const Profile: React.FC<ProfileProps> = ({ onBack, onLogout }) => {
+export const Profile: React.FC<ProfileProps> = ({ 
+  onBack, 
+  onLogout, 
+  onEditProfile, 
+  onOpenAchievements, 
+  onOpenPrivacy,
+  onOpenSettings,
+  onOpenSupport
+}) => {
   return (
     <div className="flex flex-col h-screen bg-gray-50 text-gray-900">
       {/* Header */}
@@ -57,7 +71,10 @@ export const Profile: React.FC<ProfileProps> = ({ onBack, onLogout }) => {
         <div className="p-6 space-y-4">
           <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider ml-1">Conta</h3>
           
-          <button className="w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between group active:scale-95 transition-transform">
+          <button 
+            onClick={onEditProfile}
+            className="w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between group active:scale-95 transition-transform"
+          >
              <div className="flex items-center gap-3">
                <div className="p-2 bg-gray-100 rounded-lg text-gray-600 group-hover:bg-blue-50 group-hover:text-bh-blue transition-colors">
                   <User className="w-5 h-5" />
@@ -67,7 +84,10 @@ export const Profile: React.FC<ProfileProps> = ({ onBack, onLogout }) => {
              <ChevronRight className="w-5 h-5 text-gray-300" />
           </button>
 
-          <button className="w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between group active:scale-95 transition-transform">
+          <button 
+            onClick={onOpenAchievements}
+            className="w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between group active:scale-95 transition-transform"
+          >
              <div className="flex items-center gap-3">
                <div className="p-2 bg-gray-100 rounded-lg text-gray-600 group-hover:bg-blue-50 group-hover:text-bh-blue transition-colors">
                   <Award className="w-5 h-5" />
@@ -77,7 +97,10 @@ export const Profile: React.FC<ProfileProps> = ({ onBack, onLogout }) => {
              <ChevronRight className="w-5 h-5 text-gray-300" />
           </button>
 
-          <button className="w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between group active:scale-95 transition-transform">
+          <button 
+            onClick={onOpenPrivacy}
+            className="w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between group active:scale-95 transition-transform"
+          >
              <div className="flex items-center gap-3">
                <div className="p-2 bg-gray-100 rounded-lg text-gray-600 group-hover:bg-blue-50 group-hover:text-bh-blue transition-colors">
                   <Shield className="w-5 h-5" />
@@ -89,7 +112,10 @@ export const Profile: React.FC<ProfileProps> = ({ onBack, onLogout }) => {
 
           <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider ml-1 mt-6">Geral</h3>
 
-          <button className="w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between group active:scale-95 transition-transform">
+          <button 
+            onClick={onOpenSettings}
+            className="w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between group active:scale-95 transition-transform"
+          >
              <div className="flex items-center gap-3">
                <div className="p-2 bg-gray-100 rounded-lg text-gray-600 group-hover:bg-blue-50 group-hover:text-bh-blue transition-colors">
                   <Settings className="w-5 h-5" />
@@ -99,7 +125,10 @@ export const Profile: React.FC<ProfileProps> = ({ onBack, onLogout }) => {
              <ChevronRight className="w-5 h-5 text-gray-300" />
           </button>
 
-          <button className="w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between group active:scale-95 transition-transform">
+          <button 
+            onClick={onOpenSupport}
+            className="w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between group active:scale-95 transition-transform"
+          >
              <div className="flex items-center gap-3">
                <div className="p-2 bg-gray-100 rounded-lg text-gray-600 group-hover:bg-blue-50 group-hover:text-bh-blue transition-colors">
                   <Phone className="w-5 h-5" />

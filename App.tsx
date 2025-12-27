@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Home } from './components/Home';
 import { ReportForm } from './components/ReportForm';
@@ -5,7 +6,13 @@ import { DiscreteInterface } from './components/DiscreteInterface';
 import { StatsDashboard } from './components/StatsDashboard';
 import { MapDashboard } from './components/MapDashboard';
 import { Profile } from './components/Profile';
+import { ProfileEditScreen } from './components/ProfileEditScreen';
+import { AchievementsScreen } from './components/AchievementsScreen';
+import { PrivacyScreen } from './components/PrivacyScreen';
+import { SettingsScreen } from './components/SettingsScreen';
+import { SupportScreen } from './components/SupportScreen';
 import { LoginScreen } from './components/LoginScreen';
+import { TermsScreen } from './components/TermsScreen';
 import { ViewState, ReportData } from './types';
 import { analyzeReport } from './services/geminiService';
 import { CheckCircle, AlertOctagon, Loader2, ArrowLeft, X } from 'lucide-react';
@@ -20,8 +27,12 @@ export default function App() {
   const [showAd, setShowAd] = useState(false);
 
   const handleLoginSuccess = () => {
+    setView('TERMS');
+  };
+
+  const handleAcceptTerms = () => {
     setView('HOME');
-    // Show ad immediately after login
+    // Show ad after accepting terms and entering home
     setShowAd(true);
   };
 
@@ -166,11 +177,12 @@ export default function App() {
 
       {view === 'LOGIN' && <LoginScreen onLoginSuccess={handleLoginSuccess} />}
 
+      {view === 'TERMS' && <TermsScreen onAccept={handleAcceptTerms} />}
+
       {view === 'HOME' && (
         <Home 
           onStartReport={handleStartReport} 
           onOpenStats={() => setView('STATS')} 
-          onOpenMap={() => setView('MAP')}
           onOpenProfile={() => setView('PROFILE')}
         />
       )}
@@ -200,7 +212,35 @@ export default function App() {
       )}
 
       {view === 'PROFILE' && (
-        <Profile onBack={() => setView('HOME')} onLogout={handleLogout} />
+        <Profile 
+          onBack={() => setView('HOME')} 
+          onLogout={handleLogout}
+          onEditProfile={() => setView('PROFILE_EDIT')}
+          onOpenAchievements={() => setView('ACHIEVEMENTS')}
+          onOpenPrivacy={() => setView('PRIVACY_SETTINGS')}
+          onOpenSettings={() => setView('SETTINGS')}
+          onOpenSupport={() => setView('SUPPORT')}
+        />
+      )}
+
+      {view === 'PROFILE_EDIT' && (
+        <ProfileEditScreen onBack={() => setView('PROFILE')} />
+      )}
+
+      {view === 'ACHIEVEMENTS' && (
+        <AchievementsScreen onBack={() => setView('PROFILE')} />
+      )}
+
+      {view === 'PRIVACY_SETTINGS' && (
+        <PrivacyScreen onBack={() => setView('PROFILE')} />
+      )}
+
+      {view === 'SETTINGS' && (
+        <SettingsScreen onBack={() => setView('PROFILE')} />
+      )}
+
+      {view === 'SUPPORT' && (
+        <SupportScreen onBack={() => setView('PROFILE')} />
       )}
       
       {view === 'SUCCESS' && <SuccessView />}
