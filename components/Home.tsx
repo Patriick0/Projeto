@@ -1,14 +1,15 @@
 
 import React from 'react';
-import { AlertTriangle, User, Bus, BarChart3, Home as HomeIcon } from 'lucide-react';
+import { AlertTriangle, User, Bus, BarChart3, Home as HomeIcon, Map as MapIcon } from 'lucide-react';
 
 interface HomeProps {
   onStartReport: () => void;
   onOpenStats: () => void;
   onOpenProfile: () => void;
+  onOpenMyRoute: () => void;
 }
 
-export const Home: React.FC<HomeProps> = ({ onStartReport, onOpenStats, onOpenProfile }) => {
+export const Home: React.FC<HomeProps> = ({ onStartReport, onOpenStats, onOpenProfile, onOpenMyRoute }) => {
   return (
     <div className="flex flex-col h-screen bg-gray-50">
       {/* Header */}
@@ -93,6 +94,13 @@ export const Home: React.FC<HomeProps> = ({ onStartReport, onOpenStats, onOpenPr
         <button className="flex flex-col items-center text-bh-blue">
           <HomeIcon className="w-6 h-6" />
           <span className="text-[10px] font-bold mt-1">Início</span>
+        </button>
+        <button 
+          onClick={onOpenMyRoute}
+          className="flex flex-col items-center text-gray-400 hover:text-bh-blue transition-colors"
+        >
+          <MapIcon className="w-6 h-6" />
+          <span className="text-[10px] font-bold mt-1">Trajeto</span>
         </button>
         <button 
           onClick={onOpenStats}

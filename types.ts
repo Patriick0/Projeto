@@ -39,4 +39,4 @@ export interface SupportTicket {
   response?: string;
 }
 
-export type ViewState = 'LOGIN' | 'TERMS' | 'HOME' | 'FORM' | 'DISCRETE' | 'SUCCESS' | 'STATS' | 'MAP' | 'PROFILE' | 'PROFILE_EDIT' | 'ACHIEVEMENTS' | 'PRIVACY_SETTINGS' | 'SETTINGS' | 'SUPPORT';
+export type ViewState = 'LOGIN' | 'TERMS' | 'HOME' | 'FORM' | 'DISCRETE' | 'SUCCESS' | 'STATS' | 'MAP' | 'PROFILE' | 'PROFILE_EDIT' | 'ACHIEVEMENTS' | 'PRIVACY_SETTINGS' | 'SETTINGS' | 'SUPPORT' | 'MY_ROUTE';

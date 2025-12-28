@@ -13,6 +13,7 @@ import { SettingsScreen } from './components/SettingsScreen';
 import { SupportScreen } from './components/SupportScreen';
 import { LoginScreen } from './components/LoginScreen';
 import { TermsScreen } from './components/TermsScreen';
+import { MyRouteScreen } from './components/MyRouteScreen';
 import { ViewState, ReportData } from './types';
 import { analyzeReport } from './services/geminiService';
 import { CheckCircle, AlertOctagon, Loader2, ArrowLeft, X } from 'lucide-react';
@@ -184,6 +185,7 @@ export default function App() {
           onStartReport={handleStartReport} 
           onOpenStats={() => setView('STATS')} 
           onOpenProfile={() => setView('PROFILE')}
+          onOpenMyRoute={() => setView('MY_ROUTE')}
         />
       )}
       
@@ -241,6 +243,10 @@ export default function App() {
 
       {view === 'SUPPORT' && (
         <SupportScreen onBack={() => setView('PROFILE')} />
+      )}
+
+      {view === 'MY_ROUTE' && (
+        <MyRouteScreen onBack={() => setView('HOME')} />
       )}
       
       {view === 'SUCCESS' && <SuccessView />}
